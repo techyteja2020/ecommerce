@@ -1,0 +1,49 @@
+[
+  {
+    "id": "seller001",
+    "name":"Titan watch",
+    "brandName":"titan",
+    "modelNumber":"CA12",
+    "specs":{
+      "color":"black"
+    },
+    "category" : "Appliances"
+  },
+  {
+    "id": "seller002",
+    "name":"Titan watch",
+    "brandName":"titan",
+    "modelNumber":"CA13",
+    "specs":{
+      "color":"blue"
+    },
+    "category" : "Appliances"
+  },{
+  "id": "seller003",
+  "name":"Titan watch",
+  "brandName":"titan",
+  "modelNumber":"CA15",
+  "specs":{
+    "color":"black"
+  },
+  "category" : "Appliances"
+},{
+  "id": "seller004",
+  "name":"one plus",
+  "brandName":"one plus 6",
+  "modelNumber":"MA11",
+  "specs":{
+    "color":"black"
+  },
+  "category" : "Mobile"
+},{
+  "id": "seller005",
+  "name":"one plus",
+  "brandName":"one plus 7",
+  "modelNumber":"MA12",
+  "specs":{
+    "color":"blue"
+  },
+  "category" : "Mobile"
+}
+]

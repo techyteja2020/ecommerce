@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group 'com.ecommerce'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.3.4.RELEASE') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+
+    compile 'org.projectlombok:lombok:1.12.6'
+//    compile project(':core-component')
+    compile project(':seller-component')
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+    implementation 'junit:junit:4.12'
+    implementation 'org.testng:testng:6.9.6'
+}

@@ -1,0 +1,10 @@
+rootProject.name = 'ecommerce'
+include 'ecommerce-component'
+include 'customer-component'
+include 'core-component'
+include 'seller-component'
+include 'product-component'
+include 'inventory-component'
+include 'order-component'
+include 'payment-component'
+
