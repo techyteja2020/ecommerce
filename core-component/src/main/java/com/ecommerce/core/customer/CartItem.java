@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CartItem {
     private String id;
     private String cartId;

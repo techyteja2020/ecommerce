@@ -9,6 +9,7 @@ import com.ecommerce.customer.CustomerEcommerceApplication;
 import com.ecommerce.order.service.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.util.Arrays;
 
@@ -35,6 +39,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = CustomerEcommerceApplication.class)
 @AutoConfigureMockMvc
 public class OrderControllerTest {
+    @Autowired
+    private WebApplicationContext wac;
 
     @Autowired
     private MockMvc mockMvc;
@@ -42,15 +48,15 @@ public class OrderControllerTest {
     @MockBean
     private OrderService orderService;
 
-    @Bean
-    public HttpMessageConverters converters() {
-        return new HttpMessageConverters(
-                true, Arrays.asList(new MappingJackson2HttpMessageConverter()));
+    @Before
+    public void converters() {
+        DefaultMockMvcBuilder builder = MockMvcBuilders.webAppContextSetup(this.wac);
+        this.mockMvc = builder.build();
     }
 
     @Test
     public void greetingShouldReturnMessageFromService() throws Exception {
-        when(orderService.createOrder(any(), any())).thenReturn("id001");
+        when(orderService.createOrder(any(), any())).thenReturn("order001");
         String customerId = "cu001";
         String cartId = "cucart001";
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/customers/"+customerId+"/order")
