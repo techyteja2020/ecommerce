@@ -19,14 +19,15 @@ public class OrderService {
     }
 
     private OrderRecord createOrderRecord(String customerId, CustomerOrder customerOrder) {
-        OrderRecord orderRecord = new OrderRecord();
-        orderRecord.setId(customerOrder.getId());
-        orderRecord.setCustomerId(customerId);
-        orderRecord.setCartId(customerOrder.getCartId());
-        orderRecord.setPaymentTxnid(customerOrder.getPaymentTxnid());
-        orderRecord.setPaymentRecordId(customerOrder.getPaymentRecordId());
-        orderRecord.setShipToAddressId(customerOrder.getShipToAddressId());
-        orderRecord.setBillToAddressId(customerOrder.getBillToAddressId());
-        return orderRecord;
+        OrderRecord orderRecord = OrderRecord.builder()
+                .id(customerOrder.getId())
+                .customerId(customerId)
+                .cartId(customerOrder.getCartId())
+                .billToAddressId(customerOrder.getBillToAddressId())
+                .shipToAddressId(customerOrder.getShipToAddressId())
+                .paymentRecordId(customerOrder.getPaymentRecordId())
+                .paymentTxnid(customerOrder.getPaymentTxnid())
+                .build();
+    return orderRecord;
     }
 }
