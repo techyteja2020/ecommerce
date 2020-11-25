@@ -18,7 +18,7 @@ public class PaymentService {
 
     public String makePayment(PaymentRequest paymentRequest) {
         PaymentRecord paymentRecord = paymentProcessor.process(paymentRequest);
-        PaymentRecord saveRecord = paymentRepository.save(paymentRecord.getId(), paymentRecord);
-        return saveRecord.getGatewayResponse().getSignature();
+        PaymentRecord savedRecord = paymentRepository.save(paymentRecord.getId(), paymentRecord);
+        return savedRecord.getGatewayResponse().getSignature();
     }
 }
