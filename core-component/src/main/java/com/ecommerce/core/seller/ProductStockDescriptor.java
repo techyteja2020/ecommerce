@@ -1,9 +1,7 @@
 package com.ecommerce.core.seller;
 
 import com.ecommerce.core.common.Price;
-import com.ecommerce.core.inventory.Stock;
 
-import java.util.ArrayList;
 import java.util.List;
 
 //@Valid
@@ -53,14 +51,5 @@ public class ProductStockDescriptor {
 
     public void setBarcodeList(List<String> barcodeList) {
         this.barcodeList = barcodeList;
-    }
-
-    public List<Stock> convertToStockList(String productId, String sellerId) {
-        List<Stock> stockList = new ArrayList<>();
-        for (String uniqueBarcode : this.barcodeList) {
-            Stock stock = new Stock(productId, sellerId, uniqueBarcode, price, id);
-            stockList.add(stock);
-        }
-        return stockList;
     }
 }

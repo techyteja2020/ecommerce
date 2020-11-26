@@ -1,6 +1,7 @@
 package com.ecommerce.core.inventory;
 
 import com.ecommerce.core.common.Price;
+import com.ecommerce.core.seller.ProductStockDescriptor;
 
 import java.util.Objects;
 
@@ -11,18 +12,13 @@ public class Stock {
     private String stockFillingId;
     private Price price;
 
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public Stock(String productId, String sellerId, String barcode, Price price, String id) {
+    public Stock(String productId, String sellerId, String uniqueBarcode, ProductStockDescriptor productStockDescriptor) {
         this.productId = productId;
         this.sellerId = sellerId;
-        this.barcode = barcode;
-        this.price = price;
-        this.stockFillingId = id;
+        this.barcode = uniqueBarcode;
+        this.price = productStockDescriptor.getPrice();
+        this.stockFillingId = productStockDescriptor.getId();
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
