@@ -20,7 +20,7 @@ public class CartService {
                 .price(cartItem.getPrice())
                 .productId(cartItem.getProductId())
                 .build();
-        cartRepository.save(cartId, cart);
-        return cart.getCartId();
+        Cart savedCart = cartRepository.save(cartId, cart);
+        return savedCart.getCartId();
     }
 }

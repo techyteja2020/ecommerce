@@ -14,7 +14,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WareHouseServiceTest {
@@ -41,7 +41,7 @@ public class WareHouseServiceTest {
                 .barcodeList(barcodeList)
                 .price(price).build();
 
-        doNothing().when(inventoryService).fillUp(any());
+        when(inventoryService.fillUp(any())).thenReturn(stockId);
 
         String resultProductId = wareHouseService.fillStock(productId, productStockDescriptor, sellerId);
 

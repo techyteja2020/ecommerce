@@ -2,11 +2,15 @@ package com.ecommerce.core.inventory;
 
 import com.ecommerce.core.common.Price;
 import com.ecommerce.core.seller.ProductStockDescriptor;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
 @EqualsAndHashCode
+@Builder
+@AllArgsConstructor
 public class Stock {
     private String productId;
     private String sellerId;

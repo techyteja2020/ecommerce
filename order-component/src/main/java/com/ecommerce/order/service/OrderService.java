@@ -14,8 +14,8 @@ public class OrderService {
 
     public String createOrder(CustomerOrder customerOrder, String customerId) {
         OrderRecord orderRecord = createOrderRecord(customerId,customerOrder);
-        orderRepository.save(orderRecord);
-        return orderRecord.getId();
+        OrderRecord savedOrderRecord = orderRepository.save(orderRecord);
+        return savedOrderRecord.getId();
     }
 
     private OrderRecord createOrderRecord(String customerId, CustomerOrder customerOrder) {
