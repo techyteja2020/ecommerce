@@ -1,7 +1,7 @@
 package com.ecommerce.seller.controller;
 
-import com.ecommerce.core.product.Category;
-import com.ecommerce.core.seller.ProductDefinition;
+import com.ecommerce.core.common.Price;
+import com.ecommerce.core.seller.ProductStockDescriptor;
 import com.ecommerce.seller.SellerEcommerceApplication;
 import com.ecommerce.seller.service.WareHouseService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,8 +22,8 @@ import org.springframework.test.web.servlet.setup.DefaultMockMvcBuilder;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.mockito.ArgumentMatchers.any;
@@ -50,12 +50,12 @@ class WareHouseControllerTest {
     }
 
     @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
-        when(wareHouseService.fillStock(any(), any(),any())).thenReturn("stock001");
+    public void shouldSuccessfullyFillStockForGivenProduct() throws Exception {
+        when(wareHouseService.fillStock(any(), any(), any())).thenReturn("stock001");
         String sellerId = "seller001";
         String productId = "pr001";
 
-        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/sellers/"+sellerId+"/products")
+        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/sellers/" + sellerId + "/products/" + productId)
                 .characterEncoding("UTF-8")
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)
@@ -67,20 +67,20 @@ class WareHouseControllerTest {
 
     private String getProductDefinitionInJson(String productId) throws JsonProcessingException {
 
-        String name = "LG SMART TV";
-        String brandName = "LG";
-        String modelNumber = "LG1232";
-        Map<String,String> specs = new HashMap<>();
-        Category category = Category.Appliances;
+        List<String> barcodeList = new ArrayList();
+        String barcode1 = "tv123001";
+        String barcode2 = "tv123002";
+        barcodeList.add(barcode1);
+        barcodeList.add(barcode2);
+        Price price = new Price(24000.00, "INR");
+        String stockId = "stockId";
+
         return new ObjectMapper().writeValueAsString(
-                ProductDefinition.builder()
-                        .brandName(brandName)
-                        .category(category)
-                        .id(productId)
-                        .name(name)
-                        .modelNumber(modelNumber)
-                        .specs(specs)
-                        .build()
+                ProductStockDescriptor.builder()
+                        .id(stockId)
+                        .quantity(4)
+                        .barcodeList(barcodeList)
+                        .price(price).build()
         );
     }
 }

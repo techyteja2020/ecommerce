@@ -28,19 +28,19 @@ public class GatewayProviderTest {
     private CardPaymentGateway cardPaymentGateway;
 
     @Test
-    public void testGetProvider(){
+    public void testGetProviderForUPI(){
         PaymentGateway gateway = gatewayProvider.getGateway(PaymentMode.UPI);
         assertEquals(gateway, upiPaymentGateway);
     }
 
     @Test
-    public void testGetProvider1(){
+    public void testGetProviderForNetbanking(){
         PaymentGateway gateway = gatewayProvider.getGateway(PaymentMode.NetBanking);
         assertEquals(gateway, internetBankingPaymentGateway);
     }
 
     @Test
-    public void testGetProvider2(){
+    public void testGetProviderForCardPayment(){
         PaymentGateway gateway = gatewayProvider.getGateway(PaymentMode.Card);
         assertEquals(gateway, cardPaymentGateway);
     }

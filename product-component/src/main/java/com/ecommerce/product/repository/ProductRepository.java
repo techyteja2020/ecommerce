@@ -2,7 +2,6 @@ package com.ecommerce.product.repository;
 
 import com.ecommerce.core.CustomRepository;
 import com.ecommerce.core.product.Product;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.io.IOUtils;
@@ -12,7 +11,6 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Repository
 public class ProductRepository extends CustomRepository<Product> {
@@ -36,7 +34,7 @@ public class ProductRepository extends CustomRepository<Product> {
 
         String products = IOUtils.toString(this.getClass().getResourceAsStream("/products.json"), StandardCharsets.UTF_8);
         List<Product> productList = objectMapper.readValue(products, new TypeReference<List<Product>>(){});
-        productList.stream().collect(Collectors.toMap(Product::getId, product -> product));
+        productList.forEach(product-> this.save(product));
     }
 }
 

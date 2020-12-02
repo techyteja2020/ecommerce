@@ -25,7 +25,7 @@ public class WareHouseServiceTest {
     private WareHouseService wareHouseService;
 
     @Test
-    public void testFillStock() {
+    public void shouldFillStockForProductAndReturnStockId() {
         String productId = "pro001";
         String sellerId = "seller001";
         List<String> barcodeList = new ArrayList();
@@ -43,8 +43,8 @@ public class WareHouseServiceTest {
 
         when(inventoryService.fillUp(any())).thenReturn(stockId);
 
-        String resultProductId = wareHouseService.fillStock(productId, productStockDescriptor, sellerId);
+        String filledStockId = wareHouseService.fillStock(productId, productStockDescriptor, sellerId);
 
-        assertEquals(stockId, resultProductId);
+        assertEquals(stockId, filledStockId);
     }
 }

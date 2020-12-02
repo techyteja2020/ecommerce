@@ -50,7 +50,7 @@ public class ProductDefinitionControllerTest {
     }
 
     @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
+    public void shouldSuccessfullyRegisterProduct() throws Exception {
         when(productDefinitionService.register(any(), any())).thenReturn("pr001");
         String sellerId = "seller001";
         String productId = "pr001";

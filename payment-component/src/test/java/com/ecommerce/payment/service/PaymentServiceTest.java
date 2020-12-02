@@ -33,15 +33,15 @@ public class PaymentServiceTest {
     private PaymentService paymentService;
 
     @Test
-    public void testMakePayment(){
+    public void shouldMakePaymentAndReturnPaymentSignature(){
         PaymentRequest paymentRequest = getPaymentRequestWithId("payreq001");
         PaymentRecord paymentRecord = buildPaymentRecordFrom(paymentRequest);
         when(paymentProcessor.process(paymentRequest)).thenReturn(paymentRecord);
         when(paymentRepository.save(paymentRecord.getId(),paymentRecord)).thenReturn(paymentRecord);
 
-        String paymentRecordId = paymentService.makePayment(paymentRequest);
+        String signature = paymentService.makePayment(paymentRequest);
 
-        assertEquals("sign001",paymentRecordId);
+        assertEquals("sign001",signature);
     }
 
     private PaymentRecord buildPaymentRecordFrom(PaymentRequest paymentRequest) {

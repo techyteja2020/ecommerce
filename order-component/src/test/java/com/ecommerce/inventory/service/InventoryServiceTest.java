@@ -22,7 +22,7 @@ public class InventoryServiceTest {
     private InventoryService inventoryService;
 
     @Test
-    public void testMakePayment() {
+    public void shouldFillUpStockAndReturnBarcode() {
         String barcode = "01023";
         Stock stock = Stock.builder()
                 .stockFillingId("stockfill001")

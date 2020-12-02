@@ -47,7 +47,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void greetingShouldReturnMessageFromService() throws Exception {
+    public void shouldSuccessfullyCreateOrder() throws Exception {
         when(orderService.createOrder(any(), any())).thenReturn("order001");
         String customerId = "cu001";
         String cartId = "cucart001";

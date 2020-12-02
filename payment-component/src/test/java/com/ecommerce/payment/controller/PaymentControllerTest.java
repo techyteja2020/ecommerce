@@ -50,7 +50,7 @@ public class PaymentControllerTest {
     }
 
     @Test
-    public void addToCartTest() throws Exception {
+    public void shouldSuccessfullyMakePayment() throws Exception {
         when(paymentService.makePayment(any())).thenReturn("payreq001");
         MockHttpServletRequestBuilder builder =
                 MockMvcRequestBuilders.post("/payment")

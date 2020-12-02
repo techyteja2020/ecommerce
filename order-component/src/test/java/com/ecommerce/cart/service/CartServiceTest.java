@@ -24,7 +24,7 @@ public class CartServiceTest {
     private CartService cartService;
 
     @Test
-    public void testMakePayment(){
+    public void shouldAddProductToCartAndReturnCartId(){
         String customerId = "cus001";
         String cartId = "cartId";
         Price price = new Price(2000, "INR");

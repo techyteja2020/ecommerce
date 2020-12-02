@@ -22,7 +22,7 @@ public class ProductDefinitionServiceTest {
     private ProductDefinitionService productDefinitionService;
 
     @Test
-    public void testRegisterProduct() {
+    public void shouldRegisterProductAndReturnProductId() {
         ProductDefinition productDefinition =
                 ProductDefinition.builder()
                         .id("pro001")

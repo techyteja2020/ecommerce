@@ -24,7 +24,7 @@ public class OrderServiceTest {
     private OrderService orderService;
 
     @Test
-    public void testCreateOrder(){
+    public void shouldCreateOrderAndReturnOrderId(){
         String orderId = "order001";
         CustomerOrder customerOrder = CustomerOrder.builder()
                 .billToAddressId("bill To address")
