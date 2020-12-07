@@ -36,7 +36,7 @@ public class CartServiceTest {
                 .build();
         Cart cart = mock(Cart.class);
         when(cartRepository.save(any(), any())).thenReturn(cart);
-        when(cart.getCartId()).thenReturn("cartId");
+        when(cart.getId()).thenReturn("cartId");
 
         String actualCartId = cartService.addProduct(cartItem, cartId, customerId);
         assertEquals(cartId, actualCartId);

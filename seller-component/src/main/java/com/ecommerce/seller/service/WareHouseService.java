@@ -17,7 +17,8 @@ public class WareHouseService {
 
     public String fillStock(String productId, ProductStockDescriptor productStockDescriptor, String sellerId) {
         List<Stock> stocks = convertToStockList(productId, sellerId, productStockDescriptor);
-        stocks.stream().forEach(stock -> inventoryService.fillUp(stock));
+        stocks.stream().forEach(stock ->
+                inventoryService.fillUp(stock));
         return productStockDescriptor.getId();
     }
 

@@ -9,7 +9,8 @@ public class CustomRepository<T> {
     protected final Map<String,T> repo = new HashMap();
 
     public T save(String id,T t){
-        return repo.put(id,t);
+        repo.put(id,t);
+        return t;
     }
 
     public T findOne(String primaryKey){

@@ -14,11 +14,11 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
-    @PutMapping(path = "customers/{customerId}/carts/{cartId}/add")
+    @PutMapping(path = "customers/{customerId}/carts/{cartId}")
     public ResponseEntity addToCart(@RequestBody CartItem cartItem,
                                     @PathVariable("customerId") String customerId,
                                     @PathVariable("cartId") String cartId) {
-        cartService.addProduct(cartItem, cartId, customerId);
-        return new ResponseEntity(cartId, HttpStatus.OK);
+        String itemId = cartService.addProduct(cartItem, cartId, customerId);
+        return new ResponseEntity(itemId, HttpStatus.CREATED);
     }
 }

@@ -55,7 +55,7 @@ class WareHouseControllerTest {
         String sellerId = "seller001";
         String productId = "pr001";
 
-        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/sellers/" + sellerId + "/products/" + productId)
+        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.post("/sellers/" + sellerId + "/products/" + productId+"/stocks")
                 .characterEncoding("UTF-8")
                 .accept(MediaType.APPLICATION_JSON_VALUE)
                 .contentType(MediaType.APPLICATION_JSON_VALUE)

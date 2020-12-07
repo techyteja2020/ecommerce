@@ -20,7 +20,7 @@ public class ProductDefinitionController {
     public ResponseEntity registerProduct(@RequestBody ProductDefinition product,
                                           @PathVariable("sellerId") String sellerId) {
         String productId = productDefinitionService.register(product, sellerId);
-        return new ResponseEntity(productId, HttpStatus.OK);
+        return new ResponseEntity(productId, HttpStatus.CREATED);
     }
 
 }

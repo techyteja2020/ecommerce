@@ -53,7 +53,7 @@ public class CartControllerTest {
         String cartId = "cucart001";
 
         MockHttpServletRequestBuilder builder =
-                MockMvcRequestBuilders.put("/customers/"+customerId+"/carts/"+cartId+"/add")
+                MockMvcRequestBuilders.put("/customers/"+customerId+"/carts/"+cartId)
                         .characterEncoding("UTF-8")
                         .accept(MediaType.APPLICATION_JSON_VALUE)
                         .contentType(MediaType.APPLICATION_JSON_VALUE)

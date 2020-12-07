@@ -19,6 +19,6 @@ public class OrderController {
     public ResponseEntity placeOrder(@RequestBody CustomerOrder customerOrder,
                                           @PathVariable("customerId") String customerId) {
         String orderId = orderService.createOrder(customerOrder, customerId);
-        return new ResponseEntity(orderId, HttpStatus.OK);
+        return new ResponseEntity(orderId, HttpStatus.CREATED);
     }
 }

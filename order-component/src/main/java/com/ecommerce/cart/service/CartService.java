@@ -21,6 +21,6 @@ public class CartService {
                 .productId(cartItem.getProductId())
                 .build();
         Cart savedCart = cartRepository.save(cartId, cart);
-        return savedCart.getCartId();
+        return savedCart.getId();
     }
 }
